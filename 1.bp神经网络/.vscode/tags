@@ -1,0 +1,24 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+G	../first_tf.py	/^G = grade()$/;"	kind:variable	line:32
+MNIST	../first_tf.py	/^MNIST = input_data.read_data_sets('data', one_hot=True)                           # 将外部数据读取到内存里面$/;"	kind:variable	line:4
+anwser	../first_tf.py	/^anwser = tf.placeholder(tf.float32, [None, 10], name='anwser')$/;"	kind:variable	line:14
+biases_layer1	../first_tf.py	/^biases_layer1 = tf.Variable(tf.random_normal([500]), name='biases_layer1')        # 第一层神经网络偏置量$/;"	kind:variable	line:8
+biases_layer2	../first_tf.py	/^biases_layer2 = tf.Variable(tf.random_normal([10]), name='biases_layer2')         # 第一层神经网络偏置量$/;"	kind:variable	line:11
+circulation	../first_tf.py	/^circulation = wolf(rabbit(question), anwser)$/;"	kind:variable	line:25
+first_tf.py	../first_tf.py	1;"	kind:file	line:1
+grade	../first_tf.py	/^def grade():$/;"	kind:function	line:27
+input_data	../first_tf.py	/^from tensorflow.examples.tutorials.mnist import input_data$/;"	kind:namespace	line:2
+question	../first_tf.py	/^question = tf.placeholder(tf.float32, [None, 784], name='question')               # 先占位，$/;"	kind:variable	line:13
+rabbit	../first_tf.py	/^def rabbit(the_question):$/;"	kind:function	line:17
+saver	../first_tf.py	/^saver = tf.train.Saver()$/;"	kind:variable	line:33
+tf	../first_tf.py	/^import tensorflow as tf$/;"	kind:namespace	line:1
+weight_layer1	../first_tf.py	/^weight_layer1 = tf.Variable(tf.random_normal([784, 500]), name='weight_layer1')   # 第一层神经网络权重$/;"	kind:variable	line:7
+weight_layer2	../first_tf.py	/^weight_layer2 = tf.Variable(tf.random_normal([500, 10]), name='weight_layer2')    # 第一层神经网络权重$/;"	kind:variable	line:10
+wolf	../first_tf.py	/^def wolf(anwser_of_rabbit, the_answer):$/;"	kind:function	line:21
+x0	../first_tf.py	/^  x0 = MNIST.validation.images$/;"	kind:variable	line:41
+y0	../first_tf.py	/^  y0 = MNIST.validation.labels$/;"	kind:variable	line:42
