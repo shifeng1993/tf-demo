@@ -41,4 +41,5 @@ with tf.Session() as sess:
   x0 = MNIST.validation.images                                                     # 定义测试集
   y0 = MNIST.validation.labels                                                     # 定义测试集
   print(sess.run(G,feed_dict={question:x0, anwser: y0}) * 100)                     # 输出测试结果
+  tf.summary.FileWriter('./graphs', sess.graph)                                    # 输出数据流图到graphs文件夹下 可以用“tensorboard --logdir=./graphs” 查看
   saver.save(sess, 'models/model.ckpt', global_step=1000)                          # 进行训练并保存到本地models文件夹下model文件 ，globals_step 训练 次数
