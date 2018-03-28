@@ -6,4 +6,5 @@
 /MNIST-data
 /models
 .vscode
+.idea
 !*/models/README.md
