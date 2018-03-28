@@ -13,3 +13,4 @@ with tf.Session() as sess:
   log.close()
   print(sess.run(total_op))
   print(sess.run(xy_op))
+  

@@ -30,6 +30,7 @@ bias = {
   'out': tf.Variable(tf.random_normal([n_classes]), name='bias')
 }
 
+
 # 6.定义rnn
 def RNN(x, weight, bias):
   x = tf.unstack(x, n_steps, 1)
@@ -37,16 +38,17 @@ def RNN(x, weight, bias):
   outputs, states = rnn.static_rnn(lstm_cell, x, dtype=tf.float32)
   return tf.matmul(outputs[-1], weight['out']) + bias['out']
 
+
 # 7.拿到预测结果
 pred = RNN(x, weight, bias)
 
 # 8.计算损失并指向op
-cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits_v2(logits=pred,labels=y),name='cost')
+cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits_v2(logits=pred, labels=y), name='cost')
 optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate).minimize(cost)
 
 # 9.评估模型
-correct_pred = tf.equal(tf.argmax(pred,1),tf.argmax(y,1))
-accuracy = tf.reduce_mean(tf.cast(correct_pred,tf.float32))
+correct_pred = tf.equal(tf.argmax(pred, 1), tf.argmax(y, 1))
+accuracy = tf.reduce_mean(tf.cast(correct_pred, tf.float32))
 
 # 10.初始化全部变量
 init = tf.global_variables_initializer()
@@ -58,18 +60,18 @@ with tf.Session() as sess:
   step = 1
   while step * batch_size < training_iters:
     batch_x, batch_y = mnist.train.next_batch(batch_size)
-    batch_x = batch_x.reshape((batch_size,n_steps,n_input))
-    sess.run(optimizer, feed_dict={x:batch_x,y:batch_y})
+    batch_x = batch_x.reshape((batch_size, n_steps, n_input))
+    sess.run(optimizer, feed_dict={x: batch_x, y: batch_y})
     if step % display_step == 0:
-      acc = sess.run(accuracy, feed_dict={x:batch_x,y:batch_y})
-      loss = sess.run(cost, feed_dict={x:batch_x,y:batch_y})
-      print('iter ' + str(step*batch_size) + ': minibatch loss = ' + str(loss) + ', training accuracy = ' + str(acc))
+      acc = sess.run(accuracy, feed_dict={x: batch_x, y: batch_y})
+      loss = sess.run(cost, feed_dict={x: batch_x, y: batch_y})
+      print('iter ' + str(step * batch_size) + ': minibatch loss = ' + str(loss) + ', training accuracy = ' + str(acc))
     step += 1
   print('finish')
   log.close()
-  
+
   # 测试模型 输出精度
   test_len = 128
-  test_data = mnist.test.images[:test_len].reshape((-1,n_steps,n_input))
+  test_data = mnist.test.images[:test_len].reshape((-1, n_steps, n_input))
   test_label = mnist.test.labels[:test_len]
-  print('testing accuracy', sess.run(accuracy,feed_dict={x:test_data,y:test_label}))
+  print('testing accuracy', sess.run(accuracy, feed_dict={x: test_data, y: test_label}))

@@ -1,5 +1,6 @@
 */data
 */models/*
 */graphs
+*/MNIST-data
 .vscode
 !*/models/README.md
