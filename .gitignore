@@ -7,4 +7,5 @@
 /models
 .vscode
 .idea
+*/mnist_convnet_model
 !*/models/README.md
