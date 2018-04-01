@@ -5,6 +5,7 @@
 /graphs
 /MNIST-data
 /models
+/data
 .vscode
 .idea
 */mnist_convnet_model
