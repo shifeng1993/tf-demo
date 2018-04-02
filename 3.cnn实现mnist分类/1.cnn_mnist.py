@@ -1,5 +1,6 @@
 import tensorflow as tf
 import numpy as np
+import matplotlib.pyplot as plt
 from tensorflow.examples.tutorials.mnist import input_data
 
 # 设置tensorflow对GPU的使用按需分配
@@ -94,9 +95,9 @@ with tf.Session(config=config) as sess:
     # 初始化变量
     sess.run(tf.global_variables_initializer())
     # 训练
-    for i in range(2000):
+    for i in range(500):
         X_batch, y_batch = mnist.train.next_batch(batch_size=50)
-        if i % 500 == 0:
+        if i % 100 == 0:
             train_accuracy = accuracy.eval(feed_dict={
                 X_: X_batch,
                 y_: y_batch,
@@ -117,4 +118,14 @@ with tf.Session(config=config) as sess:
         if (i + 1) % 20 == 0:
             print('testing step:', i + 1, '   ', 'test acc:',
                   test_acc_sum.eval())
-    print(" test_accuracy ", '%', test_acc_sum.eval() / 100.0)
+    print(" test_accuracy ", test_acc_sum.eval()* 100.0, '%')
+    
+    batch = mnist.test.next_batch(batch_size=100)
+    for _ in range(32):
+      show_img = test_acc_sum[:,:,:,_]
+      show_img.shape = [28, 28]
+      plt.subplot(4, 8, _ + 1)
+      plt.imshow(show_img, cmap='gray')
+      plt.axis('off')
+    plt.show()
+    plt.close()
