@@ -1,5 +1,9 @@
 import tensorflow as tf
 
+# 设置提示信息的等级 menu['1','2','3'] 默认'1'显示所有信息,'2'只显示 warning 和 Error,'3'只显示 Error
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
+
 # 原始列表
 arr = tf.constant([1, 2, 3, 4, 5])
 

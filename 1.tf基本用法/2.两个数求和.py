@@ -1,6 +1,10 @@
 import tensorflow as tf
 import numpy as np
 
+# 设置提示信息的等级 menu['1','2','3'] 默认'1'显示所有信息,'2'只显示 warning 和 Error,'3'只显示 Error
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
+
 input1 = tf.constant(1)
 input2 = tf.constant(2)
 input3 = tf.constant(3)

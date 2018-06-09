@@ -1,8 +1,9 @@
-import os
 import tensorflow as tf
 import numpy as np
 
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
+# 设置提示信息的等级 menu['1','2','3'] 默认'1'显示所有信息,'2'只显示 warning 和 Error,'3'只显示 Error
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
 # 1.准备数据：使用 NumPy 生成假数据(phony data), 总共 100 个点.
 x_data = np.random.rand(2, 100)  # 随机输入
@@ -38,7 +39,7 @@ for step in range(0, 201):
     if step % 20 == 0:
         print(str(step), sess.run(W), sess.run(b))
 print('finished~~')
-print('W:', sess.run(W), 'b:', sess.run(b))
+print('权重:', sess.run(W), '偏置:', sess.run(b))
 # 得到最佳拟合结果 W: [[0.100  0.200]], b: [0.300]
 
 # 需要注意的是np默认随机是float64，或者先用np.float32()直接初始化成float32，或者在引入计算时用tf.cast(xxx, tf.float32) 进行强制类型转换

@@ -3,6 +3,10 @@ import tensorflow as tf
 import numpy as np
 import matplotlib.pyplot as plt
 
+# 设置提示信息的等级 menu['1','2','3'] 默认'1'显示所有信息,'2'只显示 warning 和 Error,'3'只显示 Error
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
+
 # 1.数据准备，pandas ，scikit-learn 自己选择进行数据加载到内存中
 plt.rcParams['figure.figsize'] = (14, 8)                            # 可视化时图的长和宽
 
@@ -10,7 +14,7 @@ n_ob = 100                                                          # 样本数�
 
 xs = np.linspace(-3, 3, n_ob)                                       # x范围内的点
 ys = np.sin(xs) + np.random.uniform(-0.5, 0.5, n_ob)                # y范围的sin点 加随机扰动
-# plt.scatter(xs, ys)                                                 # 散点图绘制
+# plt.scatter(xs, ys)                                               # 散点图绘制
 
 # 2.准备好placeholder
 x = tf.placeholder(tf.float32, name="x")
